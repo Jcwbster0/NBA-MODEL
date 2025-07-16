@@ -1,17 +1,15 @@
 import pandas as pd
 import statsmodels.api as sm
-from statsmodels.stats.diagnostic import het_breuschpagan
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import pandas as pd
-from sklearn.linear_model import Ridge, Lasso, SGDRegressor
+from sklearn.linear_model import SGDRegressor
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error, root_mean_squared_error
+from sklearn.metrics import r2_score, mean_absolute_error
 import numpy as np
-from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
 
-NBA_SINGLE_GAME_TRAIN_DATA_PATH = '/Users/justinwebster/Desktop/NBA_SINGLE_GAME_TRAINING_DATA'
+NBA_SINGLE_GAME_TRAIN_DATA_PATH = '/Users/justinwebster/Desktop/NBA-MODEL/NBA DATA/NBA_SINGLE_GAME_TRAINING_DATA'
 
 def csv_to_df(csv):
     return pd.read_csv(csv)
