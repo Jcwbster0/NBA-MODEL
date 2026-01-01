@@ -8,8 +8,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_absolute_error
 import numpy as np
 import matplotlib.pyplot as plt
+import joblib
 
-NBA_SINGLE_GAME_TRAIN_DATA_PATH = '/Users/justinwebster/Desktop/NBA-MODEL/NBA DATA/NBA_SINGLE_GAME_TRAINING_DATA'
+NBA_SINGLE_GAME_TRAIN_DATA_PATH = '/Users/justinwebster/Documents/Software Development Files/NBA-MODEL/NBA DATA/NBA_SINGLE_GAME_TRAINING_DATA.csv'
 
 def csv_to_df(csv):
     return pd.read_csv(csv)
@@ -42,7 +43,7 @@ X_train_scaled = scaler.fit_transform(X_train)
 
 # 4. Transform the validation data using the scaler fitted on the training data
 X_val_scaled = scaler.transform(X_val)
-# --- END CORRECTED ORDER ---
+
 
 # Instantiate the SGDRegressor model
 sgd_mae_ridge_model = SGDRegressor(loss='epsilon_insensitive',
@@ -140,3 +141,9 @@ print(f"Final R-squared: {final_r2:.3f}")
 print(f"Final MAE: {final_mae:.3f}")
 print("Final Coefficients:", sgd_mae_ridge_model.coef_)
 print("Final Intercept:", sgd_mae_ridge_model.intercept_)
+
+# Save the trained model
+#joblib.dump(sgd_mae_ridge_model, 'nba_sgd_model.joblib')
+
+# Save the fitted scaler
+#joblib.dump(scaler, 'nba_scaler.joblib')
